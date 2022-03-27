@@ -3,11 +3,11 @@
   <title>Hexo</title>
   
   
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="https://yapwn.com/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
+  <link href="https://yapwn.com/"/>
   <updated>2022-03-27T06:34:07.151Z</updated>
-  <id>http://example.com/</id>
+  <id>https://yapwn.com/</id>
   
   <author>
     <name>John Doe</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>demo</title>
-    <link href="http://example.com/2022/03/27/demo/"/>
-    <id>http://example.com/2022/03/27/demo/</id>
+    <link href="https://yapwn.com/2022/03/27/demo/"/>
+    <id>https://yapwn.com/2022/03/27/demo/</id>
     <published>2022-03-27T06:33:42.000Z</published>
     <updated>2022-03-27T06:34:07.151Z</updated>
     
@@ -38,8 +38,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://example.com/2022/03/27/hello-world/"/>
-    <id>http://example.com/2022/03/27/hello-world/</id>
+    <link href="https://yapwn.com/2022/03/27/hello-world/"/>
+    <id>https://yapwn.com/2022/03/27/hello-world/</id>
     <published>2022-03-27T06:09:21.471Z</published>
     <updated>2022-03-27T06:09:21.471Z</updated>
     
