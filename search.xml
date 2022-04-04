@@ -3,11 +3,11 @@
   <entry>
     <title>如何更好理解Peterson算法?</title>
     <url>/archives/%E5%A6%82%E4%BD%95%E6%9B%B4%E5%A5%BD%E7%90%86%E8%A7%A3Peterson%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="如何更好理解Peterson算法？"><a href="#如何更好理解Peterson算法？" class="headerlink" title="如何更好理解Peterson算法？"></a>如何更好理解Peterson算法？</h1><h2 id="1-Peterson算法提出的背景"><a href="#1-Peterson算法提出的背景" class="headerlink" title="1 Peterson算法提出的背景"></a>1 Peterson算法提出的背景</h2><p>在我们讲述Peterson算法之间，我们先了解一下Peterson算法提出前的背景（即：在这个算法提出之前，前人们都做了哪些工作）这对于我们之后理解Peterson算法有很大的裨益。</p>
+    <content><![CDATA[<h1 id="1-Peterson算法提出的背景"><a href="#1-Peterson算法提出的背景" class="headerlink" title="1 Peterson算法提出的背景"></a>1 Peterson算法提出的背景</h1><p>在我们讲述Peterson算法之间，我们先了解一下Peterson算法提出前的背景（即：在这个算法提出之前，前人们都做了哪些工作）这对于我们之后理解Peterson算法有很大的裨益。</p>
 <p>Peterson 算法是基于双线程互斥访问的LockOne与LockTwo算法而来。LockOne算法使用一个 flag 布尔数组，LockTwo 使用一个 turn的整型量，都实现了互斥，但是都存在死锁的可能。Peterson 算法把这两种算法结合起来，完美地用软件实现了双线程互斥问题。</p>
 <span id="more"></span>    
 
-<h2 id="2-Peterson算法"><a href="#2-Peterson算法" class="headerlink" title="2 Peterson算法"></a>2 Peterson算法</h2><p>首先，我们来看看下面这两段代码：</p>
+<h1 id="2-Peterson算法"><a href="#2-Peterson算法" class="headerlink" title="2 Peterson算法"></a>2 Peterson算法</h1><p>首先，我们来看看下面这两段代码：</p>
  <pre class="line-numbers language-c" data-language="c"><code class="language-c">Pi进程：																	
 flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> True<span class="token punctuation">;</span>
 <span class="token keyword">while</span><span class="token punctuation">(</span>flag<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -60,7 +60,7 @@ remainder section<span class="token punctuation">;</span><span aria-hidden="true
 </li>
 </ul>
 <p>仅过上面的分析，我们就不难理解，当Pi和Pj经过一轮谦让之后，就会直接根据turn的值（即：该轮到谁进临界区了）来直接决定谁该进入临界区。现在回过头回顾整个算法，其实我们会发现，Peterson算法的思想会更贴近于生活中的真实情况，大家一般都是略微谦让一下，然后直奔主题，难道不是吗？哈哈</p>
-<h2 id="3-参考资料"><a href="#3-参考资料" class="headerlink" title="3 参考资料"></a>3 参考资料</h2><p>[1]维基百科编者. Peterson算法[G/OL]. 维基百科, 2021(20210501)[2021-05-01]. <a href="https://zh.wikipedia.org/w/index.php?title=Peterson%E7%AE%97%E6%B3%95&amp;oldid=65429794">https://zh.wikipedia.org/w/index.php?title=Peterson%E7%AE%97%E6%B3%95&amp;oldid=65429794</a>.</p>
+<h1 id="3-参考资料"><a href="#3-参考资料" class="headerlink" title="3 参考资料"></a>3 参考资料</h1><p>[1]维基百科编者. Peterson算法[G/OL]. 维基百科, 2021(20210501)[2021-05-01]. <a href="https://zh.wikipedia.org/w/index.php?title=Peterson%E7%AE%97%E6%B3%95&amp;oldid=65429794">https://zh.wikipedia.org/w/index.php?title=Peterson%E7%AE%97%E6%B3%95&amp;oldid=65429794</a>.</p>
 ]]></content>
       <categories>
         <category>算法</category>

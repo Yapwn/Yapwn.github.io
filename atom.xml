@@ -6,7 +6,7 @@
   <link href="https://yapwn.com/atom.xml" rel="self"/>
   
   <link href="https://yapwn.com/"/>
-  <updated>2022-04-04T12:17:43.450Z</updated>
+  <updated>2022-04-04T15:54:17.021Z</updated>
   <id>https://yapwn.com/</id>
   
   <author>
@@ -21,10 +21,10 @@
     <link href="https://yapwn.com/archives/%E5%A6%82%E4%BD%95%E6%9B%B4%E5%A5%BD%E7%90%86%E8%A7%A3Peterson%E7%AE%97%E6%B3%95/"/>
     <id>https://yapwn.com/archives/%E5%A6%82%E4%BD%95%E6%9B%B4%E5%A5%BD%E7%90%86%E8%A7%A3Peterson%E7%AE%97%E6%B3%95/</id>
     <published>2022-04-04T12:11:58.000Z</published>
-    <updated>2022-04-04T12:17:43.450Z</updated>
+    <updated>2022-04-04T15:54:17.021Z</updated>
     
     
-    <summary type="html">&lt;h1 id=&quot;如何更好理解Peterson算法？&quot;&gt;&lt;a href=&quot;#如何更好理解Peterson算法？&quot; class=&quot;headerlink&quot; title=&quot;如何更好理解Peterson算法？&quot;&gt;&lt;/a&gt;如何更好理解Peterson算法？&lt;/h1&gt;&lt;h2 id=&quot;1-Peterson算法提出的背景&quot;&gt;&lt;a href=&quot;#1-Peterson算法提出的背景&quot; class=&quot;headerlink&quot; title=&quot;1 Peterson算法提出的背景&quot;&gt;&lt;/a&gt;1 Peterson算法提出的背景&lt;/h2&gt;&lt;p&gt;在我们讲述Peterson算法之间，我们先了解一下Peterson算法提出前的背景（即：在这个算法提出之前，前人们都做了哪些工作）这对于我们之后理解Peterson算法有很大的裨益。&lt;/p&gt;
+    <summary type="html">&lt;h1 id=&quot;1-Peterson算法提出的背景&quot;&gt;&lt;a href=&quot;#1-Peterson算法提出的背景&quot; class=&quot;headerlink&quot; title=&quot;1 Peterson算法提出的背景&quot;&gt;&lt;/a&gt;1 Peterson算法提出的背景&lt;/h1&gt;&lt;p&gt;在我们讲述Peterson算法之间，我们先了解一下Peterson算法提出前的背景（即：在这个算法提出之前，前人们都做了哪些工作）这对于我们之后理解Peterson算法有很大的裨益。&lt;/p&gt;
 &lt;p&gt;Peterson 算法是基于双线程互斥访问的LockOne与LockTwo算法而来。LockOne算法使用一个 flag 布尔数组，LockTwo 使用一个 turn的整型量，都实现了互斥，但是都存在死锁的可能。Peterson 算法把这两种算法结合起来，完美地用软件实现了双线程互斥问题。&lt;/p&gt;</summary>
     
     
@@ -43,7 +43,7 @@
     <link href="https://yapwn.com/archives/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/"/>
     <id>https://yapwn.com/archives/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/</id>
     <published>2022-03-27T11:27:55.000Z</published>
-    <updated>2022-04-04T15:35:05.321Z</updated>
+    <updated>2022-04-04T15:48:13.762Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Yapwn/BlogDataBase/master/ObsidianWord%E5%B0%81%E9%9D%A2%E5%9B%BE.jpg&quot;&gt;&lt;/p&gt;
