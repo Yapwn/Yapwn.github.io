@@ -20,29 +20,47 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"yapwn.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.11.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Sharing my Life, Work, Technique and Sentiment!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Meditations">
-<meta property="og:url" content="https://yapwn.com/">
+    <meta name="description" content="1 背景想必大家都遇到过要在Word中编辑公式的情况，当然，可能编辑公式还不是最难的，最难的可能是给公式编号吧，如何让公式自动根据章节号进行编号？如何让公式的编号与正文的右边对齐？对于能够熟练使用Word的人来说这些问题倒还好，但是不常使用Word的人来说，可能是挺困难的一件事情，下面就记录一下我的解决方案，一来是方便自己以后查阅（不然过一段时间就又忘记了），二来是给处于同样困境的朋友们一些参考">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Word操作篇I-公式编辑">
+<meta property="og:url" content="https://yapwn.com/archives/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/">
 <meta property="og:site_name" content="Meditations">
-<meta property="og:description" content="Sharing my Life, Work, Technique and Sentiment!">
+<meta property="og:description" content="1 背景想必大家都遇到过要在Word中编辑公式的情况，当然，可能编辑公式还不是最难的，最难的可能是给公式编号吧，如何让公式自动根据章节号进行编号？如何让公式的编号与正文的右边对齐？对于能够熟练使用Word的人来说这些问题倒还好，但是不常使用Word的人来说，可能是挺困难的一件事情，下面就记录一下我的解决方案，一来是方便自己以后查阅（不然过一段时间就又忘记了），二来是给处于同样困境的朋友们一些参考">
 <meta property="og:locale">
+<meta property="og:image" content="https://raw.githubusercontent.com/Yapwn/BlogDataBase/master/ObsidianWord%E5%B0%81%E9%9D%A2%E5%9B%BE.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316170729209.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316171309471.png?token=ALWR22HTUSJDXCYIVEURMSTCGHWEY">
+<meta property="og:image" content="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316171509274.png?token=ALWR22AHWWN4ENXQ6DSVCXDCGHWGC">
+<meta property="og:image" content="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316172029370.png?token=ALWR22AUMX4E5FDS4OAVDO3CGHWG2">
+<meta property="og:image" content="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316172122298.png?token=ALWR22AUMBV2TFL5YXSY3IDCGHWHE">
+<meta property="og:image" content="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316172512421.png?token=ALWR22EE52C2KF5S2MMLYC3CGHWHU">
+<meta property="og:image" content="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316173056110.png?token=ALWR22CCGLLZD2G5GDIXG4DCGHWIA">
+<meta property="og:image" content="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316173828223.png?token=ALWR22ER6BEDYE2MSUMHK33CGHWIS">
+<meta property="og:image" content="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316174036926.png?token=ALWR22DRP553XJWBBPD44N3CGHWJA">
+<meta property="og:image" content="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316174519594.png?token=ALWR22BWA3XGNL2V2RQ3XD3CGHWJO">
+<meta property="og:image" content="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316174844116.png?token=ALWR22GFJUTOUUO65UEMANDCGHWKK">
+<meta property="og:image" content="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316175112579.png?token=ALWR22CDGAWJE6ETOXCWOMTCGHWK6">
+<meta property="og:image" content="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316175334594.png?token=ALWR22GGB4H5N6MU6HX6NHTCGHWLW">
+<meta property="og:image" content="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316175529553.png?token=ALWR22FCWGO2FMW2GLVFLSTCGHWL2">
+<meta property="og:image" content="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316175604162.png?token=ALWR22HEOZZCLW5NIU72FSDCGHWMU">
+<meta property="og:image" content="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316175943588.png?token=ALWR22AVQ25V5GBWPWE5JMTCGHWNG">
+<meta property="article:published_time" content="2022-03-27T11:27:55.000Z">
+<meta property="article:modified_time" content="2022-04-03T16:35:50.470Z">
 <meta property="article:author" content="Yapwn">
-<meta property="article:tag" content="Life">
-<meta property="article:tag" content="Work">
-<meta property="article:tag" content="Technique">
-<meta property="article:tag" content="Sentiment">
+<meta property="article:tag" content="office">
+<meta property="article:tag" content="word">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Yapwn/BlogDataBase/master/ObsidianWord%E5%B0%81%E9%9D%A2%E5%9B%BE.jpg">
 
 
-<link rel="canonical" href="https://yapwn.com/">
+<link rel="canonical" href="https://yapwn.com/archives/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-Hans","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"https://yapwn.com/archives/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/","path":"archives/Word操作篇I-公式编辑/","title":"Word操作篇I-公式编辑"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Meditations</title>
+<title>Word操作篇I-公式编辑 | Meditations</title>
   
 
 
@@ -75,7 +93,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">Meditations</h1>
+      <p class="site-title">Meditations</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">Yapwn's Blog</p>
@@ -108,7 +126,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -121,6 +139,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%83%8C%E6%99%AF"><span class="nav-text">1 背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E9%A2%84%E6%9C%9F%E6%95%88%E6%9E%9C"><span class="nav-text">2 预期效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%B7%A5%E5%85%B7"><span class="nav-text">3 工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%85%B7%E4%BD%93%E6%93%8D%E4%BD%9C"><span class="nav-text">4 具体操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%85%AC%E5%BC%8F%E8%87%AA%E5%8A%A8%E5%8F%B7"><span class="nav-text">4.1 公式自动号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E5%85%AC%E5%BC%8F%E7%9A%84%E4%BA%A4%E5%8F%89%E5%BC%95%E7%94%A8"><span class="nav-text">4.2 公式的交叉引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E5%85%AC%E5%BC%8F%E7%BC%96%E5%8F%B7%E4%B8%8E%E6%AD%A3%E6%96%87%E7%9A%84%E5%8F%B3%E8%BE%B9%E5%AF%B9%E9%BD%90"><span class="nav-text">4.3 公式编号与正文的右边对齐</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%90%8E%E8%AE%B0%EF%BC%88%E7%A2%8E%E7%A2%8E%E5%BF%B5%EF%BC%89"><span class="nav-text">5 后记（碎碎念）</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -174,16 +193,17 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="https://yapwn.com/archives/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -197,13 +217,13 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Meditations">
+      <meta itemprop="name" content="Word操作篇I-公式编辑 | Meditations">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/archives/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/" class="post-title-link" itemprop="url">Word操作篇I-公式编辑</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Word操作篇I-公式编辑
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -246,7 +266,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><img src="https://raw.githubusercontent.com/Yapwn/BlogDataBase/master/ObsidianWord%E5%B0%81%E9%9D%A2%E5%9B%BE.jpg"></p>
+        <p><img src="https://raw.githubusercontent.com/Yapwn/BlogDataBase/master/ObsidianWord%E5%B0%81%E9%9D%A2%E5%9B%BE.jpg"></p>
 <h2 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h2><p>想必大家都遇到过要在Word中编辑公式的情况，当然，可能编辑公式还不是最难的，最难的可能是给公式编号吧，如何让公式自动根据章节号进行编号？如何让公式的编号与正文的右边对齐？对于能够熟练使用Word的人来说这些问题倒还好，但是不常使用Word的人来说，可能是挺困难的一件事情，下面就记录一下我的解决方案，一来是方便自己以后查阅（不然过一段时间就又忘记了），二来是给处于同样困境的朋友们一些参考。</p>
 <h2 id="2-预期效果"><a href="#2-预期效果" class="headerlink" title="2 预期效果"></a>2 预期效果</h2><ul>
 <li>实现公式根据章节自动编号以及交叉引用</li>
@@ -296,7 +316,6 @@
 <h2 id="5-后记（碎碎念）"><a href="#5-后记（碎碎念）" class="headerlink" title="5 后记（碎碎念）"></a>5 后记（碎碎念）</h2><p>从上面的具体步骤我们可以发现word其实操作起来挺复杂的，就一个公式编号问题就要设置那么多东西，其实，我个人建议如果条件允许的话，能用Latex就尽量用Latex（当然也有避不开的情况…），那东西可是方便太多了，虽然上手有些难度，但是真的用顺手之后我相信你会爱上它的，后续我也会出一些关于Latex的教程，讲解一些Latex标签的基本用法，想了解的就关注一下。</p>
 <p>emmm…这次就这样吧，再见！</p>
 
-      
     </div>
 
     
@@ -304,11 +323,17 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          <div class="post-tags">
+              <a href="/tags/office/" rel="tag"># office</a>
+              <a href="/tags/word/" rel="tag"># word</a>
+          </div>
+
+        
+
     </footer>
   </article>
 </div>
+
 
 
 
