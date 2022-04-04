@@ -1,6 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>如何更好理解Peterson算法?</title>
+    <url>/archives/%E5%A6%82%E4%BD%95%E6%9B%B4%E5%A5%BD%E7%90%86%E8%A7%A3Peterson%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="如何更好理解Peterson算法？"><a href="#如何更好理解Peterson算法？" class="headerlink" title="如何更好理解Peterson算法？"></a>如何更好理解Peterson算法？</h1><h2 id="1-Peterson算法提出的背景"><a href="#1-Peterson算法提出的背景" class="headerlink" title="1 Peterson算法提出的背景"></a>1 Peterson算法提出的背景</h2><p>在我们讲述Peterson算法之间，我们先了解一下Peterson算法提出前的背景（即：在这个算法提出之前，前人们都做了哪些工作）这对于我们之后理解Peterson算法有很大的裨益。</p>
+<p>Peterson 算法是基于双线程互斥访问的LockOne与LockTwo算法而来。LockOne算法使用一个 flag 布尔数组，LockTwo 使用一个 turn的整型量，都实现了互斥，但是都存在死锁的可能。Peterson 算法把这两种算法结合起来，完美地用软件实现了双线程互斥问题。</p>
+<span id="more"></span>    
+
+<h2 id="2-Peterson算法"><a href="#2-Peterson算法" class="headerlink" title="2 Peterson算法"></a>2 Peterson算法</h2><p>首先，我们来看看下面这两段代码：</p>
+ <pre class="line-numbers language-c" data-language="c"><code class="language-c">Pi进程：																	
+flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> True<span class="token punctuation">;</span>
+<span class="token keyword">while</span><span class="token punctuation">(</span>flag<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+critical section<span class="token punctuation">;</span>
+flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> False<span class="token punctuation">;</span>
+remainder section<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">Pj进程：																
+flag<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> True<span class="token punctuation">;</span>
+<span class="token keyword">while</span><span class="token punctuation">(</span>flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+critical section<span class="token punctuation">;</span>
+flag<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> False<span class="token punctuation">;</span>
+remainder section<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>以上是用来实现两个进程互斥访问临界区的两端代码，我们可以这样来理解这两段代码，其中<code>flag[i]</code>表示进程Pi表示想要进入临界区，<code>while(flag[j])</code>可以理解为Pi在自己进临界区之前，先问问Pj是否想要进入临界区，如果Pj想进的话它就等待（Pi品德高尚）；类似的，Pj也是同样的。双方互相谦让的结果是，最终两个进程谁也进不了临界区。（可以想象这样一个生活场景，两个人同时想进屋，结果在门口谦让了了半天，过了很久都没进去）</p>
+<p>Peterson算法就是在上面代码的基础之上，又引入了一个变量turn，打破了这种因为谦让而导致“饥饿”的现象。下面我们先来看看Peterson算法的代码：</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">Pi进程：																	
+flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> True<span class="token punctuation">;</span>
+turn <span class="token operator">=</span> j<span class="token punctuation">;</span>
+<span class="token keyword">while</span><span class="token punctuation">(</span>flag<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> turn <span class="token operator">==</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span>
+critical section<span class="token punctuation">;</span>
+flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> False<span class="token punctuation">;</span>
+remainder section<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">Pj进程：																	
+flag<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> True<span class="token punctuation">;</span>
+turn <span class="token operator">=</span> i<span class="token punctuation">;</span>
+<span class="token keyword">while</span><span class="token punctuation">(</span>flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> turn <span class="token operator">==</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+critical section<span class="token punctuation">;</span>
+flag<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> False<span class="token punctuation">;</span>
+remainder section<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>怎么理解变量turn呢？可以将turn变量理解成轮到谁进入临界区了。举个例子：turn = i，表示轮到Pi进入临界区。那么上面这个代码就可以理解为：首先，Pi想进入临界区（<code>flag[i] = True</code>），然后，还是和前面的代码一样，Pi会先把进入临界区的机会让给Pj（<code>turn = j</code>），同样地，当Pj想进入临界区时，也会将进入临界区的权利先让给Pi。紧接着，变量turn的作用就显现出来了，当Pj把进入临界区的机会又让给Pi的时候（注意：这是发生在Pi将进入临界区的优先权让给Pj之后），Pi这次就会直接进入临界区。就不会再次出现一直互相谦让，最终导致均无法进入临界区的情况了。</p>
+<p>关于为什么当进入临界区的权利（即turn = i）又回到Pi手里时，Pi会直接进入临界区的分析？我们可以分析一下Pi能够成功进入临界区的条件（即：while(flag[j] &amp;&amp; turn == j)语句）：</p>
+<p>总的分为以下两种情况：</p>
+<ol>
+<li><p>Pj不想进入临界区（flag[j] = False）</p>
+<p>当Pj不想进入临界区时，自然也就不存在Pi和Pj冲突的情况，Pi当然就直接进入临界区。</p>
+</li>
+<li><p>Pj想进入临界区（flag[j] = True）</p>
+<p>当Pj想进入临界区，又分为以下两种情况：</p>
+</li>
+</ol>
+<ul>
+<li><p>当 turn = i</p>
+<p>turn = i说明当前轮到i进入临界区了 ，这个时候i就直接进入临界区了，不再谦让。（其实这个挺合理的，根据Peterson算法的代码我们不难发现因为turn的值是根据先后想要进入临界区的顺序排列的）</p>
+</li>
+<li><p>当 turn != i</p>
+<p>turn != i 说明当前轮到i进入临界区了没有轮到Pi进入临界区，Pi自然需要等待。</p>
+</li>
+</ul>
+<p>仅过上面的分析，我们就不难理解，当Pi和Pj经过一轮谦让之后，就会直接根据turn的值（即：该轮到谁进临界区了）来直接决定谁该进入临界区。现在回过头回顾整个算法，其实我们会发现，Peterson算法的思想会更贴近于生活中的真实情况，大家一般都是略微谦让一下，然后直奔主题，难道不是吗？哈哈</p>
+<h2 id="3-参考资料"><a href="#3-参考资料" class="headerlink" title="3 参考资料"></a>3 参考资料</h2><p>[1]维基百科编者. Peterson算法[G/OL]. 维基百科, 2021(20210501)[2021-05-01]. <a href="https://zh.wikipedia.org/w/index.php?title=Peterson%E7%AE%97%E6%B3%95&amp;oldid=65429794">https://zh.wikipedia.org/w/index.php?title=Peterson%E7%AE%97%E6%B3%95&amp;oldid=65429794</a>.</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>OS</tag>
+        <tag>Algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Word操作篇I-公式编辑</title>
     <url>/archives/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/</url>
     <content><![CDATA[<p><img src="https://raw.githubusercontent.com/Yapwn/BlogDataBase/master/ObsidianWord%E5%B0%81%E9%9D%A2%E5%9B%BE.jpg"></p>
