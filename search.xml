@@ -15,7 +15,7 @@
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">screen</span> -list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </blockquote>
 <p>如果当前存在screen会话，就会显示：</p>
-<img src="https://raw.githubusercontent.com/Yapwn/BlogDataBase/master/ObsidianObsidian20220405234416.png" align="left" style="zoom:80%;">
+ <img src="https://raw.githubusercontent.com/Yapwn/BlogDataBase/master/ObsidianObsidian20220405234416.png" style="zoom:80%;">
 
 <p>其中，30599是创建的screen会话的pid，demo是screen会话的名称，Detached是当前screen会话的状态，Detached表示当前会话没有人正在操作，还有另一个状态Attached，表示当前会话有人正在操作。</p>
 <h4 id="3-2-screen会话的创建"><a href="#3-2-screen会话的创建" class="headerlink" title="3.2 screen会话的创建"></a>3.2 screen会话的创建</h4><p>创建一个screen会话，通过<code>-S</code>选项可以指定要创建的screen会话的名称</p>
