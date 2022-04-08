@@ -1,88 +1,219 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>远程会话管理工具:screen</title>
-      <link href="/archives/%E8%BF%9C%E7%A8%8B%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7screen/"/>
-      <url>/archives/%E8%BF%9C%E7%A8%8B%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7screen/</url>
-      
-        <content type="html"><![CDATA[<h3 id="1-screen-是什么"><a href="#1-screen-是什么" class="headerlink" title="1 screen 是什么"></a>1 screen 是什么</h3><p>screen通俗的说就是一个关于ssh的远程会话的管理工具。</p><h3 id="2-screen-有什么用"><a href="#2-screen-有什么用" class="headerlink" title="2 screen 有什么用"></a>2 screen 有什么用</h3><ul><li>创建一个screen会话之后，即使中途ssh突然断开，在当前会话下执行的程序（或命令）也能够继续执行，不受影响</li><li>通过创建screen会话，其他人也可以进入创建的screen会话观察程序（或指令）的执行情况</li></ul><span id="more"></span>    <h3 id="3-screen-如何使用"><a href="#3-screen-如何使用" class="headerlink" title="3 screen 如何使用"></a>3 screen 如何使用</h3><h4 id="3-1-screen会话的查询"><a href="#3-1-screen会话的查询" class="headerlink" title="3.1 screen会话的查询"></a>3.1 screen会话的查询</h4><p>查看当前存在的哪些screen会话</p><blockquote><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">screen</span> -list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></blockquote><p>如果当前存在screen会话，就会显示：</p> <img src="https://raw.githubusercontent.com/Yapwn/BlogDataBase/master/ObsidianObsidian20220405234416.png" style="zoom:80%;"><p>其中，30599是创建的screen会话的pid，demo是screen会话的名称，Detached是当前screen会话的状态，Detached表示当前会话没有人正在操作，还有另一个状态Attached，表示当前会话有人正在操作。</p><h4 id="3-2-screen会话的创建"><a href="#3-2-screen会话的创建" class="headerlink" title="3.2 screen会话的创建"></a>3.2 screen会话的创建</h4><p>创建一个screen会话，通过<code>-S</code>选项可以指定要创建的screen会话的名称</p><blockquote><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">screen</span> -S <span class="token punctuation">[</span>screen会话名称<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></blockquote><h4 id="3-3-暂时离开会话（程序和指令继续执行）"><a href="#3-3-暂时离开会话（程序和指令继续执行）" class="headerlink" title="3.3 暂时离开会话（程序和指令继续执行）"></a>3.3 暂时离开会话（程序和指令继续执行）</h4><p>通过<kbd>ctrl a d</kbd>(按住<kbd>ctrl</kbd>，然后按<kbd>a</kbd>再按<kbd>d</kbd>)，可以暂时退出会话，但是会话中的程序会继续执行。（注意区分和后面退出会话的区别）</p><h4 id="3-4-screen会话的恢复"><a href="#3-4-screen会话的恢复" class="headerlink" title="3.4 screen会话的恢复"></a>3.4 screen会话的恢复</h4><blockquote><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">screen</span> -r screen会话的pid或screen会话的名称<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></blockquote><h4 id="3-5-screen会话的删除"><a href="#3-5-screen会话的删除" class="headerlink" title="3.5 screen会话的删除"></a>3.5 screen会话的删除</h4><p>方法一：通过<code>screen -r</code>进入想要删除的screen会话，然后输入<kbd>exit</kbd>退出当前screen会话（会话中的程序不会在继续执行）</p><p>方法二：如果不能进入screen会话，通过<kbd>kill screen会话pid</kbd>将当前screen会话删除</p><h4 id="3-6-screen会话的共享"><a href="#3-6-screen会话的共享" class="headerlink" title="3.6 screen会话的共享"></a>3.6 screen会话的共享</h4><p>其他人可以链接到远程服务器，通过<code>-x</code>选项观看当前screen会话正在执行的程序</p><blockquote><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">screen</span> -x screen会话的名称或screen会话的pid<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></blockquote><h3 id="4-参考资料"><a href="#4-参考资料" class="headerlink" title="4 参考资料"></a>4 参考资料</h3><ul><li><a href="https://www.vpser.net/manage/screen.html">SSH远程会话管理工具 - screen使用教程</a></li></ul>]]></content>
-      
-      
+<search>
+  <entry>
+    <title>远程会话管理工具:screen</title>
+    <url>/archives/%E8%BF%9C%E7%A8%8B%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7screen/</url>
+    <content><![CDATA[<h3 id="1-screen-是什么"><a href="#1-screen-是什么" class="headerlink" title="1 screen 是什么"></a>1 screen 是什么</h3><p>screen通俗的说就是一个关于ssh的远程会话的管理工具。</p>
+<h3 id="2-screen-有什么用"><a href="#2-screen-有什么用" class="headerlink" title="2 screen 有什么用"></a>2 screen 有什么用</h3><ul>
+<li>创建一个screen会话之后，即使中途ssh突然断开，在当前会话下执行的程序（或命令）也能够继续执行，不受影响</li>
+<li>通过创建screen会话，其他人也可以进入创建的screen会话观察程序（或指令）的执行情况</li>
+</ul>
+<span id="more"></span>    
+
+<h3 id="3-screen-如何使用"><a href="#3-screen-如何使用" class="headerlink" title="3 screen 如何使用"></a>3 screen 如何使用</h3><h4 id="3-1-screen会话的查询"><a href="#3-1-screen会话的查询" class="headerlink" title="3.1 screen会话的查询"></a>3.1 screen会话的查询</h4><p>查看当前存在的哪些screen会话</p>
+<blockquote>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">screen</span> -list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</blockquote>
+<p>如果当前存在screen会话，就会显示：</p>
+ <img src="https://raw.githubusercontent.com/Yapwn/BlogDataBase/master/ObsidianObsidian20220405234416.png" style="zoom:80%;">
+
+<p>其中，30599是创建的screen会话的pid，demo是screen会话的名称，Detached是当前screen会话的状态，Detached表示当前会话没有人正在操作，还有另一个状态Attached，表示当前会话有人正在操作。</p>
+<h4 id="3-2-screen会话的创建"><a href="#3-2-screen会话的创建" class="headerlink" title="3.2 screen会话的创建"></a>3.2 screen会话的创建</h4><p>创建一个screen会话，通过<code>-S</code>选项可以指定要创建的screen会话的名称</p>
+<blockquote>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">screen</span> -S <span class="token punctuation">[</span>screen会话名称<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</blockquote>
+<h4 id="3-3-暂时离开会话（程序和指令继续执行）"><a href="#3-3-暂时离开会话（程序和指令继续执行）" class="headerlink" title="3.3 暂时离开会话（程序和指令继续执行）"></a>3.3 暂时离开会话（程序和指令继续执行）</h4><p>通过<kbd>ctrl a d</kbd>(按住<kbd>ctrl</kbd>，然后按<kbd>a</kbd>再按<kbd>d</kbd>)，可以暂时退出会话，但是会话中的程序会继续执行。（注意区分和后面退出会话的区别）</p>
+<h4 id="3-4-screen会话的恢复"><a href="#3-4-screen会话的恢复" class="headerlink" title="3.4 screen会话的恢复"></a>3.4 screen会话的恢复</h4><blockquote>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">screen</span> -r screen会话的pid或screen会话的名称<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</blockquote>
+<h4 id="3-5-screen会话的删除"><a href="#3-5-screen会话的删除" class="headerlink" title="3.5 screen会话的删除"></a>3.5 screen会话的删除</h4><p>方法一：通过<code>screen -r</code>进入想要删除的screen会话，然后输入<kbd>exit</kbd>退出当前screen会话（会话中的程序不会在继续执行）</p>
+<p>方法二：如果不能进入screen会话，通过<kbd>kill screen会话pid</kbd>将当前screen会话删除</p>
+<h4 id="3-6-screen会话的共享"><a href="#3-6-screen会话的共享" class="headerlink" title="3.6 screen会话的共享"></a>3.6 screen会话的共享</h4><p>其他人可以链接到远程服务器，通过<code>-x</code>选项观看当前screen会话正在执行的程序</p>
+<blockquote>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">screen</span> -x screen会话的名称或screen会话的pid<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</blockquote>
+<h3 id="4-参考资料"><a href="#4-参考资料" class="headerlink" title="4 参考资料"></a>4 参考资料</h3><ul>
+<li><a href="https://www.vpser.net/manage/screen.html">SSH远程会话管理工具 - screen使用教程</a></li>
+</ul>
+]]></content>
       <categories>
-          
-          <category> Linux </category>
-          
+        <category>Linux</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Linux </tag>
-            
-            <tag> command </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>如何更好理解Peterson算法?</title>
-      <link href="/archives/%E5%A6%82%E4%BD%95%E6%9B%B4%E5%A5%BD%E7%90%86%E8%A7%A3Peterson%E7%AE%97%E6%B3%95/"/>
-      <url>/archives/%E5%A6%82%E4%BD%95%E6%9B%B4%E5%A5%BD%E7%90%86%E8%A7%A3Peterson%E7%AE%97%E6%B3%95/</url>
-      
-        <content type="html"><![CDATA[<h1 id="1-Peterson算法提出的背景"><a href="#1-Peterson算法提出的背景" class="headerlink" title="1 Peterson算法提出的背景"></a>1 Peterson算法提出的背景</h1><p>在我们讲述Peterson算法之间，我们先了解一下Peterson算法提出前的背景（即：在这个算法提出之前，前人们都做了哪些工作）这对于我们之后理解Peterson算法有很大的裨益。</p><p>Peterson 算法是基于双线程互斥访问的LockOne与LockTwo算法而来。LockOne算法使用一个 flag 布尔数组，LockTwo 使用一个 turn的整型量，都实现了互斥，但是都存在死锁的可能。Peterson 算法把这两种算法结合起来，完美地用软件实现了双线程互斥问题。</p><span id="more"></span>    <h1 id="2-Peterson算法"><a href="#2-Peterson算法" class="headerlink" title="2 Peterson算法"></a>2 Peterson算法</h1><p>首先，我们来看看下面这两段代码：</p> <pre class="line-numbers language-c" data-language="c"><code class="language-c">Pi进程：flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> True<span class="token punctuation">;</span><span class="token keyword">while</span><span class="token punctuation">(</span>flag<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>critical section<span class="token punctuation">;</span>flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> False<span class="token punctuation">;</span>remainder section<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-c" data-language="c"><code class="language-c">Pj进程：flag<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> True<span class="token punctuation">;</span><span class="token keyword">while</span><span class="token punctuation">(</span>flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>critical section<span class="token punctuation">;</span>flag<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> False<span class="token punctuation">;</span>remainder section<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>以上是用来实现两个进程互斥访问临界区的两端代码，我们可以这样来理解这两段代码，其中<code>flag[i]</code>表示进程Pi表示想要进入临界区，<code>while(flag[j])</code>可以理解为Pi在自己进临界区之前，先问问Pj是否想要进入临界区，如果Pj想进的话它就等待（Pi品德高尚）；类似的，Pj也是同样的。双方互相谦让的结果是，最终两个进程谁也进不了临界区。（可以想象这样一个生活场景，两个人同时想进屋，结果在门口谦让了了半天，过了很久都没进去）</p><p>Peterson算法就是在上面代码的基础之上，又引入了一个变量turn，打破了这种因为谦让而导致“饥饿”的现象。下面我们先来看看Peterson算法的代码：</p><pre class="line-numbers language-c" data-language="c"><code class="language-c">Pi进程：flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> True<span class="token punctuation">;</span>turn <span class="token operator">=</span> j<span class="token punctuation">;</span><span class="token keyword">while</span><span class="token punctuation">(</span>flag<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> turn <span class="token operator">==</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span>critical section<span class="token punctuation">;</span>flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> False<span class="token punctuation">;</span>remainder section<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-c" data-language="c"><code class="language-c">Pj进程：flag<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> True<span class="token punctuation">;</span>turn <span class="token operator">=</span> i<span class="token punctuation">;</span><span class="token keyword">while</span><span class="token punctuation">(</span>flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> turn <span class="token operator">==</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>critical section<span class="token punctuation">;</span>flag<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> False<span class="token punctuation">;</span>remainder section<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>怎么理解变量turn呢？可以将turn变量理解成轮到谁进入临界区了。举个例子：turn = i，表示轮到Pi进入临界区。那么上面这个代码就可以理解为：首先，Pi想进入临界区（<code>flag[i] = True</code>），然后，还是和前面的代码一样，Pi会先把进入临界区的机会让给Pj（<code>turn = j</code>），同样地，当Pj想进入临界区时，也会将进入临界区的权利先让给Pi。紧接着，变量turn的作用就显现出来了，当Pj把进入临界区的机会又让给Pi的时候（注意：这是发生在Pi将进入临界区的优先权让给Pj之后），Pi这次就会直接进入临界区。就不会再次出现一直互相谦让，最终导致均无法进入临界区的情况了。</p><p>关于为什么当进入临界区的权利（即turn = i）又回到Pi手里时，Pi会直接进入临界区的分析？我们可以分析一下Pi能够成功进入临界区的条件（即：while(flag[j] &amp;&amp; turn == j)语句）：</p><p>总的分为以下两种情况：</p><ol><li><p>Pj不想进入临界区（flag[j] = False）</p><p>当Pj不想进入临界区时，自然也就不存在Pi和Pj冲突的情况，Pi当然就直接进入临界区。</p></li><li><p>Pj想进入临界区（flag[j] = True）</p><p>当Pj想进入临界区，又分为以下两种情况：</p></li></ol><ul><li><p>当 turn = i</p><p>turn = i说明当前轮到i进入临界区了 ，这个时候i就直接进入临界区了，不再谦让。（其实这个挺合理的，根据Peterson算法的代码我们不难发现因为turn的值是根据先后想要进入临界区的顺序排列的）</p></li><li><p>当 turn != i</p><p>turn != i 说明当前轮到i进入临界区了没有轮到Pi进入临界区，Pi自然需要等待。</p></li></ul><p>仅过上面的分析，我们就不难理解，当Pi和Pj经过一轮谦让之后，就会直接根据turn的值（即：该轮到谁进临界区了）来直接决定谁该进入临界区。现在回过头回顾整个算法，其实我们会发现，Peterson算法的思想会更贴近于生活中的真实情况，大家一般都是略微谦让一下，然后直奔主题，难道不是吗？哈哈</p><h1 id="3-参考资料"><a href="#3-参考资料" class="headerlink" title="3 参考资料"></a>3 参考资料</h1><p>[1]维基百科编者. Peterson算法[G/OL]. 维基百科, 2021(20210501)[2021-05-01]. <a href="https://zh.wikipedia.org/w/index.php?title=Peterson%E7%AE%97%E6%B3%95&amp;oldid=65429794">https://zh.wikipedia.org/w/index.php?title=Peterson%E7%AE%97%E6%B3%95&amp;oldid=65429794</a>.</p>]]></content>
-      
-      
+      <tags>
+        <tag>Linux</tag>
+        <tag>command</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>你好像一位长辈！</title>
+    <url>/archives/%E4%BD%A0%E5%A5%BD%E5%83%8F%E4%B8%80%E4%BD%8D%E9%95%BF%E8%BE%88%EF%BC%81/</url>
+    <content><![CDATA[<p>下面这个今天和朋友的一段对话：</p>
+<blockquote>
+<ul>
+<li><p>我：考上了吗？</p>
+</li>
+<li><p>朋友：没有，差一点</p>
+</li>
+<li><p>我：那找到调剂的学校了嘛？</p>
+</li>
+<li><p>朋友：没有，准备二战</p>
+</li>
+<li><p>我：那找好工作了嘛？</p>
+</li>
+<li><p>朋友：你好像一位长辈。。</p>
+<p>……</p>
+</li>
+</ul>
+</blockquote>
+<span id="more"></span>
+
+<p>朋友这句看似开玩笑的话，“你好像一位长辈。。”，突然警醒了我，让我不禁陷入了沉思：</p>
+<p>“是呀，我是什么时候变成了这样？”</p>
+<p>“看看我之前问的那些问题确实像一位长辈”</p>
+<p>“难道每个人就应该按照所谓的一个既定轨迹去发展吗？”</p>
+<p>是呀，不知道什么时候，自己也开始渐渐受到了既定思维的影响，在潜意识里开始认同或者认为，人就应该按照“小学-初中-高中-大学-读研-工作-买房-结婚…”这样的轨迹去发展，可是真的是这样吗？是谁规定的？到了一个特定的阶段就应该按照该阶段所谓的特定的事情去做？除此之外就没在有别的可能性了吗？</p>
+<p>不，不是这样的，如果人人都按照上面所谓的既定的轨迹去生活，那么人还能称之为人吗？那样的人生还有意义吗？我觉得那更像一段不可修改的代码，一个冷冰冰的流水线。当然不可否认，那样的轨迹是我们大多数人的生活，我不能去说它好与不好，只不过我们应该允许例外的存在，能够去接受多样性，不能做一个活在套子里的人，用自己以为对的事情，去要求别人也那样，这样肯定是不好的。</p>
+<p>我们应该允许并尊重每个人在自己人生的各个阶段做出属于自己的独特选择，而不是去问他们你以为，或者你自己定义的一个人生选择，这样只会给他们压力，或者引起他们的反感，而且做这样的人未免也太无趣了！</p>
+<p>所以，以后这样的话还是留给“长辈”们去问吧，毕竟我只想做你的朋友！</p>
+]]></content>
       <categories>
-          
-          <category> 算法 </category>
-          
+        <category>随笔</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> OS </tag>
-            
-            <tag> Algorithm </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Word操作篇I-公式编辑</title>
-      <link href="/archives/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/"/>
-      <url>/archives/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/</url>
-      
-        <content type="html"><![CDATA[<p><img src="https://raw.githubusercontent.com/Yapwn/BlogDataBase/master/ObsidianWord%E5%B0%81%E9%9D%A2%E5%9B%BE.jpg"></p><h2 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h2><p>想必大家都遇到过要在Word中编辑公式的情况，当然，可能编辑公式还不是最难的，最难的可能是给公式编号吧，如何让公式自动根据章节号进行编号？如何让公式的编号与正文的右边对齐？对于能够熟练使用Word的人来说这些问题倒还好，但是不常使用Word的人来说，可能是挺困难的一件事情，下面就记录一下我的解决方案，一来是方便自己以后查阅（不然过一段时间就又忘记了），二来是给处于同样困境的朋友们一些参考。</p><span id="more"></span><h2 id="2-预期效果"><a href="#2-预期效果" class="headerlink" title="2 预期效果"></a>2 预期效果</h2><ul><li>实现公式根据章节自动编号以及交叉引用</li><li>实现公式编号于正文的右边对齐</li></ul><h2 id="3-工具"><a href="#3-工具" class="headerlink" title="3 工具"></a>3 工具</h2><p>首先，先简单介绍了一下我进行下面操作用到的环境和工具：</p><ul><li>Windows 10 教育版（21H2）</li><li>MathType（7.4.4.516）</li><li>Word（2202）</li></ul><h2 id="4-具体操作"><a href="#4-具体操作" class="headerlink" title="4 具体操作"></a>4 具体操作</h2><h3 id="4-1-公式自动号"><a href="#4-1-公式自动号" class="headerlink" title="4.1 公式自动号"></a>4.1 公式自动号</h3><p>打开word，在word上端选项卡中选择Math Type这一项，点击插入编号-格式化，进行插入前的设置（比如：公式是根据章还是根据节编号等等）</p><p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316170729209.png"></p><p>这里我们以公式按章节编号为例进行讲解，点击确认，就完成了设置。</p><p>然后，在插入公式栏中选择右编号，根据实际使用中插入公式的位置进行选择即可，点击确认，就可以进行公式输入。</p><p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316171309471.png?token=ALWR22HTUSJDXCYIVEURMSTCGHWEY"></p><p>输入相应的公式之后，关闭输入窗口，就可以看到公式已经自动按照章节进行编号了。</p><p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316171509274.png?token=ALWR22AHWWN4ENXQ6DSVCXDCGHWGC"></p><p>当当前章节公式编辑完毕，要进行下一章公式的编辑时，只需要在当前章插入分隔符（选择公式编号栏-章与节-插入分隔符-输入下一章的编号-确认），即可进行下一章公式的编辑：</p><p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316172029370.png?token=ALWR22AUMX4E5FDS4OAVDO3CGHWG2"></p><p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316172122298.png?token=ALWR22AUMBV2TFL5YXSY3IDCGHWHE"></p><h3 id="4-2-公式的交叉引用"><a href="#4-2-公式的交叉引用" class="headerlink" title="4.2 公式的交叉引用"></a>4.2 公式的交叉引用</h3><p>在需要插入公式的地方，选择公式编号栏-点击插入引用，点击确认。</p><p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316172512421.png?token=ALWR22EE52C2KF5S2MMLYC3CGHWHU"></p><p>按照提示操作，找到需要插入的公式，双击该公式的编号，插入完成。</p><p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316173056110.png?token=ALWR22CCGLLZD2G5GDIXG4DCGHWIA"></p><h3 id="4-3-公式编号与正文的右边对齐"><a href="#4-3-公式编号与正文的右边对齐" class="headerlink" title="4.3 公式编号与正文的右边对齐"></a>4.3 公式编号与正文的右边对齐</h3><p>随便找到一个已经 插入的公式，选中编号-右键-点击段落-点击制表位，你会看到如下界面：</p><p>第一个参数，表示对公式的位置进行设置：</p><p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316173828223.png?token=ALWR22ER6BEDYE2MSUMHK33CGHWIS"></p><p>第二个参数，表示对公式编号的位置进行设置：</p><p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316174036926.png?token=ALWR22DRP553XJWBBPD44N3CGHWJA"></p><p>这时，我们只需要对第二个参数进行调整，就可以改变编号的位置，从而实现编号与正文的右侧对齐。</p><p>比如，我这里更改成30个字符，记得要将原来的39.52个字符那一项清除，点击确认。</p><p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316174519594.png?token=ALWR22BWA3XGNL2V2RQ3XD3CGHWJO"></p><p>可以发现，图中编号(2-1)的位置发生了改变：</p><p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316174844116.png?token=ALWR22GFJUTOUUO65UEMANDCGHWKK"></p><p>如果公式较多的话，可以选择将上述这个操作设置成样式，这样每次只要点击对应样式就可直接完成对齐操作：</p><p>在开始-样式一栏，选择创建样式，输入样式名称，点击修改：</p><p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316175112579.png?token=ALWR22CDGAWJE6ETOXCWOMTCGHWK6"></p><p>在点击格式-选择制表位：</p><p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316175334594.png?token=ALWR22GGB4H5N6MU6HX6NHTCGHWLW"></p><p>按照刚才的参数进行设置即可（这里不在赘述）：</p><p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316175529553.png?token=ALWR22FCWGO2FMW2GLVFLSTCGHWL2"></p><p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316175604162.png?token=ALWR22HEOZZCLW5NIU72FSDCGHWMU"></p><p>设置好之后，我们随便找一个没有对齐的公式，选中该公式的编号点击我们刚才设置好的样式：</p><p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316175943588.png?token=ALWR22AVQ25V5GBWPWE5JMTCGHWNG"></p><p>可以发现编号（1-1）也同样实现了右对齐。</p><h2 id="5-后记（碎碎念）"><a href="#5-后记（碎碎念）" class="headerlink" title="5 后记（碎碎念）"></a>5 后记（碎碎念）</h2><p>从上面的具体步骤我们可以发现word其实操作起来挺复杂的，就一个公式编号问题就要设置那么多东西，其实，我个人建议如果条件允许的话，能用Latex就尽量用Latex（当然也有避不开的情况…），那东西可是方便太多了，虽然上手有些难度，但是真的用顺手之后我相信你会爱上它的，后续我也会出一些关于Latex的教程，讲解一些Latex标签的基本用法，想了解的就关注一下。</p><p>emmm…这次就这样吧，再见！</p>]]></content>
-      
-      
+      <tags>
+        <tag>成长</tag>
+        <tag>反思</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何更好理解Peterson算法?</title>
+    <url>/archives/%E5%A6%82%E4%BD%95%E6%9B%B4%E5%A5%BD%E7%90%86%E8%A7%A3Peterson%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="1-Peterson算法提出的背景"><a href="#1-Peterson算法提出的背景" class="headerlink" title="1 Peterson算法提出的背景"></a>1 Peterson算法提出的背景</h1><p>在我们讲述Peterson算法之间，我们先了解一下Peterson算法提出前的背景（即：在这个算法提出之前，前人们都做了哪些工作）这对于我们之后理解Peterson算法有很大的裨益。</p>
+<p>Peterson 算法是基于双线程互斥访问的LockOne与LockTwo算法而来。LockOne算法使用一个 flag 布尔数组，LockTwo 使用一个 turn的整型量，都实现了互斥，但是都存在死锁的可能。Peterson 算法把这两种算法结合起来，完美地用软件实现了双线程互斥问题。</p>
+<span id="more"></span>    
+
+<h1 id="2-Peterson算法"><a href="#2-Peterson算法" class="headerlink" title="2 Peterson算法"></a>2 Peterson算法</h1><p>首先，我们来看看下面这两段代码：</p>
+ <pre class="line-numbers language-c" data-language="c"><code class="language-c">Pi进程：																	
+flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> True<span class="token punctuation">;</span>
+<span class="token keyword">while</span><span class="token punctuation">(</span>flag<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+critical section<span class="token punctuation">;</span>
+flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> False<span class="token punctuation">;</span>
+remainder section<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">Pj进程：																
+flag<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> True<span class="token punctuation">;</span>
+<span class="token keyword">while</span><span class="token punctuation">(</span>flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+critical section<span class="token punctuation">;</span>
+flag<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> False<span class="token punctuation">;</span>
+remainder section<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>以上是用来实现两个进程互斥访问临界区的两端代码，我们可以这样来理解这两段代码，其中<code>flag[i]</code>表示进程Pi表示想要进入临界区，<code>while(flag[j])</code>可以理解为Pi在自己进临界区之前，先问问Pj是否想要进入临界区，如果Pj想进的话它就等待（Pi品德高尚）；类似的，Pj也是同样的。双方互相谦让的结果是，最终两个进程谁也进不了临界区。（可以想象这样一个生活场景，两个人同时想进屋，结果在门口谦让了了半天，过了很久都没进去）</p>
+<p>Peterson算法就是在上面代码的基础之上，又引入了一个变量turn，打破了这种因为谦让而导致“饥饿”的现象。下面我们先来看看Peterson算法的代码：</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">Pi进程：																	
+flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> True<span class="token punctuation">;</span>
+turn <span class="token operator">=</span> j<span class="token punctuation">;</span>
+<span class="token keyword">while</span><span class="token punctuation">(</span>flag<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> turn <span class="token operator">==</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span>
+critical section<span class="token punctuation">;</span>
+flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> False<span class="token punctuation">;</span>
+remainder section<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">Pj进程：																	
+flag<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> True<span class="token punctuation">;</span>
+turn <span class="token operator">=</span> i<span class="token punctuation">;</span>
+<span class="token keyword">while</span><span class="token punctuation">(</span>flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> turn <span class="token operator">==</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+critical section<span class="token punctuation">;</span>
+flag<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> False<span class="token punctuation">;</span>
+remainder section<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>怎么理解变量turn呢？可以将turn变量理解成轮到谁进入临界区了。举个例子：turn = i，表示轮到Pi进入临界区。那么上面这个代码就可以理解为：首先，Pi想进入临界区（<code>flag[i] = True</code>），然后，还是和前面的代码一样，Pi会先把进入临界区的机会让给Pj（<code>turn = j</code>），同样地，当Pj想进入临界区时，也会将进入临界区的权利先让给Pi。紧接着，变量turn的作用就显现出来了，当Pj把进入临界区的机会又让给Pi的时候（注意：这是发生在Pi将进入临界区的优先权让给Pj之后），Pi这次就会直接进入临界区。就不会再次出现一直互相谦让，最终导致均无法进入临界区的情况了。</p>
+<p>关于为什么当进入临界区的权利（即turn = i）又回到Pi手里时，Pi会直接进入临界区的分析？我们可以分析一下Pi能够成功进入临界区的条件（即：while(flag[j] &amp;&amp; turn == j)语句）：</p>
+<p>总的分为以下两种情况：</p>
+<ol>
+<li><p>Pj不想进入临界区（flag[j] = False）</p>
+<p>当Pj不想进入临界区时，自然也就不存在Pi和Pj冲突的情况，Pi当然就直接进入临界区。</p>
+</li>
+<li><p>Pj想进入临界区（flag[j] = True）</p>
+<p>当Pj想进入临界区，又分为以下两种情况：</p>
+</li>
+</ol>
+<ul>
+<li><p>当 turn = i</p>
+<p>turn = i说明当前轮到i进入临界区了 ，这个时候i就直接进入临界区了，不再谦让。（其实这个挺合理的，根据Peterson算法的代码我们不难发现因为turn的值是根据先后想要进入临界区的顺序排列的）</p>
+</li>
+<li><p>当 turn != i</p>
+<p>turn != i 说明当前轮到i进入临界区了没有轮到Pi进入临界区，Pi自然需要等待。</p>
+</li>
+</ul>
+<p>仅过上面的分析，我们就不难理解，当Pi和Pj经过一轮谦让之后，就会直接根据turn的值（即：该轮到谁进临界区了）来直接决定谁该进入临界区。现在回过头回顾整个算法，其实我们会发现，Peterson算法的思想会更贴近于生活中的真实情况，大家一般都是略微谦让一下，然后直奔主题，难道不是吗？哈哈</p>
+<h1 id="3-参考资料"><a href="#3-参考资料" class="headerlink" title="3 参考资料"></a>3 参考资料</h1><p>[1]维基百科编者. Peterson算法[G/OL]. 维基百科, 2021(20210501)[2021-05-01]. <a href="https://zh.wikipedia.org/w/index.php?title=Peterson%E7%AE%97%E6%B3%95&amp;oldid=65429794">https://zh.wikipedia.org/w/index.php?title=Peterson%E7%AE%97%E6%B3%95&amp;oldid=65429794</a>.</p>
+]]></content>
       <categories>
-          
-          <category> 软件 </category>
-          
+        <category>算法</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> office </tag>
-            
-            <tag> word </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-  
-  
+      <tags>
+        <tag>OS</tag>
+        <tag>Algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Word操作篇I-公式编辑</title>
+    <url>/archives/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/</url>
+    <content><![CDATA[<p><img src="https://raw.githubusercontent.com/Yapwn/BlogDataBase/master/ObsidianWord%E5%B0%81%E9%9D%A2%E5%9B%BE.jpg"></p>
+<h2 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h2><p>想必大家都遇到过要在Word中编辑公式的情况，当然，可能编辑公式还不是最难的，最难的可能是给公式编号吧，如何让公式自动根据章节号进行编号？如何让公式的编号与正文的右边对齐？对于能够熟练使用Word的人来说这些问题倒还好，但是不常使用Word的人来说，可能是挺困难的一件事情，下面就记录一下我的解决方案，一来是方便自己以后查阅（不然过一段时间就又忘记了），二来是给处于同样困境的朋友们一些参考。</p>
+<span id="more"></span>
+<h2 id="2-预期效果"><a href="#2-预期效果" class="headerlink" title="2 预期效果"></a>2 预期效果</h2><ul>
+<li>实现公式根据章节自动编号以及交叉引用</li>
+<li>实现公式编号于正文的右边对齐</li>
+</ul>
+<h2 id="3-工具"><a href="#3-工具" class="headerlink" title="3 工具"></a>3 工具</h2><p>首先，先简单介绍了一下我进行下面操作用到的环境和工具：</p>
+<ul>
+<li>Windows 10 教育版（21H2）</li>
+<li>MathType（7.4.4.516）</li>
+<li>Word（2202）</li>
+</ul>
+<h2 id="4-具体操作"><a href="#4-具体操作" class="headerlink" title="4 具体操作"></a>4 具体操作</h2><h3 id="4-1-公式自动号"><a href="#4-1-公式自动号" class="headerlink" title="4.1 公式自动号"></a>4.1 公式自动号</h3><p>打开word，在word上端选项卡中选择Math Type这一项，点击插入编号-格式化，进行插入前的设置（比如：公式是根据章还是根据节编号等等）</p>
+<p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316170729209.png"></p>
+<p>这里我们以公式按章节编号为例进行讲解，点击确认，就完成了设置。</p>
+<p>然后，在插入公式栏中选择右编号，根据实际使用中插入公式的位置进行选择即可，点击确认，就可以进行公式输入。</p>
+<p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316171309471.png?token=ALWR22HTUSJDXCYIVEURMSTCGHWEY"></p>
+<p>输入相应的公式之后，关闭输入窗口，就可以看到公式已经自动按照章节进行编号了。</p>
+<p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316171509274.png?token=ALWR22AHWWN4ENXQ6DSVCXDCGHWGC"></p>
+<p>当当前章节公式编辑完毕，要进行下一章公式的编辑时，只需要在当前章插入分隔符（选择公式编号栏-章与节-插入分隔符-输入下一章的编号-确认），即可进行下一章公式的编辑：</p>
+<p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316172029370.png?token=ALWR22AUMX4E5FDS4OAVDO3CGHWG2"></p>
+<p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316172122298.png?token=ALWR22AUMBV2TFL5YXSY3IDCGHWHE"></p>
+<h3 id="4-2-公式的交叉引用"><a href="#4-2-公式的交叉引用" class="headerlink" title="4.2 公式的交叉引用"></a>4.2 公式的交叉引用</h3><p>在需要插入公式的地方，选择公式编号栏-点击插入引用，点击确认。</p>
+<p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316172512421.png?token=ALWR22EE52C2KF5S2MMLYC3CGHWHU"></p>
+<p>按照提示操作，找到需要插入的公式，双击该公式的编号，插入完成。</p>
+<p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316173056110.png?token=ALWR22CCGLLZD2G5GDIXG4DCGHWIA"></p>
+<h3 id="4-3-公式编号与正文的右边对齐"><a href="#4-3-公式编号与正文的右边对齐" class="headerlink" title="4.3 公式编号与正文的右边对齐"></a>4.3 公式编号与正文的右边对齐</h3><p>随便找到一个已经 插入的公式，选中编号-右键-点击段落-点击制表位，你会看到如下界面：</p>
+<p>第一个参数，表示对公式的位置进行设置：</p>
+<p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316173828223.png?token=ALWR22ER6BEDYE2MSUMHK33CGHWIS"></p>
+<p>第二个参数，表示对公式编号的位置进行设置：</p>
+<p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316174036926.png?token=ALWR22DRP553XJWBBPD44N3CGHWJA"></p>
+<p>这时，我们只需要对第二个参数进行调整，就可以改变编号的位置，从而实现编号与正文的右侧对齐。</p>
+<p>比如，我这里更改成30个字符，记得要将原来的39.52个字符那一项清除，点击确认。</p>
+<p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316174519594.png?token=ALWR22BWA3XGNL2V2RQ3XD3CGHWJO"></p>
+<p>可以发现，图中编号(2-1)的位置发生了改变：</p>
+<p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316174844116.png?token=ALWR22GFJUTOUUO65UEMANDCGHWKK"></p>
+<p>如果公式较多的话，可以选择将上述这个操作设置成样式，这样每次只要点击对应样式就可直接完成对齐操作：</p>
+<p>在开始-样式一栏，选择创建样式，输入样式名称，点击修改：</p>
+<p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316175112579.png?token=ALWR22CDGAWJE6ETOXCWOMTCGHWK6"></p>
+<p>在点击格式-选择制表位：</p>
+<p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316175334594.png?token=ALWR22GGB4H5N6MU6HX6NHTCGHWLW"></p>
+<p>按照刚才的参数进行设置即可（这里不在赘述）：</p>
+<p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316175529553.png?token=ALWR22FCWGO2FMW2GLVFLSTCGHWL2"></p>
+<p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316175604162.png?token=ALWR22HEOZZCLW5NIU72FSDCGHWMU"></p>
+<p>设置好之后，我们随便找一个没有对齐的公式，选中该公式的编号点击我们刚才设置好的样式：</p>
+<p><img src="https://raw.githubusercontent.com/CNMKYBW/BlogDataBase/master/Word%E6%93%8D%E4%BD%9C%E7%AF%87I-%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91/image-20220316175943588.png?token=ALWR22AVQ25V5GBWPWE5JMTCGHWNG"></p>
+<p>可以发现编号（1-1）也同样实现了右对齐。</p>
+<h2 id="5-后记（碎碎念）"><a href="#5-后记（碎碎念）" class="headerlink" title="5 后记（碎碎念）"></a>5 后记（碎碎念）</h2><p>从上面的具体步骤我们可以发现word其实操作起来挺复杂的，就一个公式编号问题就要设置那么多东西，其实，我个人建议如果条件允许的话，能用Latex就尽量用Latex（当然也有避不开的情况…），那东西可是方便太多了，虽然上手有些难度，但是真的用顺手之后我相信你会爱上它的，后续我也会出一些关于Latex的教程，讲解一些Latex标签的基本用法，想了解的就关注一下。</p>
+<p>emmm…这次就这样吧，再见！</p>
+]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>office</tag>
+        <tag>word</tag>
+      </tags>
+  </entry>
 </search>

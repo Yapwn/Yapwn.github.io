@@ -6,7 +6,7 @@
   <link href="https://yapwn.com/atom.xml" rel="self"/>
   
   <link href="https://yapwn.com/"/>
-  <updated>2022-04-06T00:26:30.206Z</updated>
+  <updated>2022-04-08T09:13:04.418Z</updated>
   <id>https://yapwn.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>你好像一位长辈！</title>
+    <link href="https://yapwn.com/archives/%E4%BD%A0%E5%A5%BD%E5%83%8F%E4%B8%80%E4%BD%8D%E9%95%BF%E8%BE%88%EF%BC%81/"/>
+    <id>https://yapwn.com/archives/%E4%BD%A0%E5%A5%BD%E5%83%8F%E4%B8%80%E4%BD%8D%E9%95%BF%E8%BE%88%EF%BC%81/</id>
+    <published>2022-04-08T08:20:45.000Z</published>
+    <updated>2022-04-08T09:13:04.418Z</updated>
+    
+    
+    <summary type="html">仅以此篇用来时刻警醒自己不要被外界的一些思维固化，这个世界从来都不是一个二元世界，人生就更不是了，并不是只有一条路可走，要时刻保持自己思维的独特性和多样性 ，活出自己精彩！</summary>
+    
+    
+    
+    <category term="随笔" scheme="https://yapwn.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="成长" scheme="https://yapwn.com/tags/%E6%88%90%E9%95%BF/"/>
+    
+    <category term="反思" scheme="https://yapwn.com/tags/%E5%8F%8D%E6%80%9D/"/>
+    
+  </entry>
   
   <entry>
     <title>远程会话管理工具:screen</title>
